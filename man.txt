@@ -7,7 +7,7 @@ add_birthday: Adds birthday to the existing contact
 add_email: Adds email to the existing contact
 delete_email: Deletes email from the existing contact
 delete_contact: Deletes the existing contact
-search_contact: Searches contacts in the address book
+search_contacts: Searches contacts in the address book
 
 Notes actions:
 add_note: Adds note to the existing contact

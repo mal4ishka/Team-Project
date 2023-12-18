@@ -1,4 +1,5 @@
 from collections import UserDict
+from .Name import Name
 
 
 class AddressBook(UserDict):
@@ -139,3 +140,18 @@ class AddressBook(UserDict):
                 print(record)
         else:
             print('Nothing found')
+
+    def edit_name(self):
+        input_name = input("Enter the name of the contact: ")
+        record = self.search_record_by_name(input_name)
+        if record:
+            while True:
+                try:
+                    new_name = input(f"Enter a new name for the contact '{record.name}': ")
+                    record.name = Name(new_name)
+                    print('Name was successfully changed')
+                    break
+                except ValueError as e:
+                    print(e)
+        else:
+            print(f"Contact '{input_name}' not found in the address book")

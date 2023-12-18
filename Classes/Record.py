@@ -45,4 +45,4 @@ class Record:
 
     def __str__(self):
         birthday_str = str(self.birthday).split()[0] if self.birthday else ''
-        return f"Contact name: {self.name}, phones: {'; '.join(p.value for p in self.phones)}, birthday: {birthday_str}, emails: {'; '.join(e.value for e in self.emails)}, notes: {self.notes}"
+        return f"Contact name: {self.name}, phones: {'; '.join(p.value for p in self.phones)}, birthday: {birthday_str}, emails: {'; '.join(e.value for e in self.emails)}"

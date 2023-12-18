@@ -32,7 +32,7 @@ class AddressBook(UserDict):
     def search_records_by_name(self, search_query):
         records = []
         for contact in self.contacts.values():
-            if str(contact.name).__contains__(search_query) or str(contact.notes).__contains__(search_query):
+            if str(contact.name).__contains__(search_query):
                 records.append(contact)
         return records
 

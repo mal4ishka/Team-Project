@@ -1,9 +1,7 @@
-from Classes.Field import Field
-from Classes.Name import Name
-from Classes.Phone import Phone
-from Classes.Birthday import Birthday
 from Classes.Record import Record
 from Classes.AddressBook import AddressBook
+import pickle
+import os
 
 
 def handler():
@@ -11,51 +9,60 @@ def handler():
     print('Type ? for help')
     while wait:
         inquire = input()
-        response = parser(inquire)
-        if response == man:
+        parser(inquire)
+        if inquire == '?':
             print(man)
-        if response == 'exit':
+        elif inquire == 'exit':
             wait = False
 
 
 def parser(inquire):
-    if inquire == '?':
-        return OPERATIONS[inquire]
-    elif inquire == 'add_contact':
+    if inquire == 'add_contact':
         record = Record()
         address_book.add_contact(record)
+        make_dump()
     elif inquire == 'print_contacts':
         address_book.print_contacts()
     elif inquire == 'add_email':
         address_book.add_email()
+        make_dump()
     elif inquire == 'add_birthday':
         address_book.add_birthday()
+        make_dump()
     elif inquire == 'add_phone':
         address_book.add_phone()
+        make_dump()
     elif inquire == 'delete_phone':
         address_book.delete_phone()
+        make_dump()
     elif inquire == 'delete_contact':
         address_book.delete_contact()
+        make_dump()
     elif inquire == 'search_contacts':
         address_book.search_contacts()
     elif inquire == 'add_note':
         address_book.add_note()
+        make_dump()
     elif inquire == 'delete_note':
         address_book.delete_note()
+        make_dump()
+    else:
+        print('Something went wrong. Please try again')
 
 
-def terminate(inquire):
-    return 'exit'
+def make_dump():
+    with open(data_name, "wb") as f:
+        pickle.dump(address_book, f)
 
 
-address_book = AddressBook()
+data_name = 'data/data.bin'
+dats_size = os.path.getsize(data_name)
+
+if dats_size == 0:
+    address_book = AddressBook()
+else:
+    with open(data_name, "rb") as file:
+        address_book = pickle.load(file)
 
 with open('man.txt', 'r') as fh:
     man = fh.read()
-
-
-OPERATIONS = {
-    'exit': terminate,
-    '?': man,
-    'add_contact': Record,
-}

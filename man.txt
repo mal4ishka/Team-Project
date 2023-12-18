@@ -13,7 +13,7 @@ Notes actions:
 add_note: Adds note to the existing contact
 edit_note: Edits the existing note
 delete_note: Deletes the existing note
-search_note': Searches notes in the contacts
+search_note: Searches notes in the contacts
 
 Tags actions:
 add_tags: Adds tags to the existing note

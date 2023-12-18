@@ -40,8 +40,14 @@ class Record:
     def get_phone_numbers(self):
         return [(index + 1, phone.value) for index, phone in enumerate(self.phones)]
 
+    def get_emails(self):
+        return [(index + 1, email.value) for index, email in enumerate(self.emails)]
+
     def delete_phone(self, index):
         return self.phones.pop(index)
+
+    def delete_email(self, index):
+        return self.emails.pop(index)
 
     def __str__(self):
         birthday_str = str(self.birthday).split()[0] if self.birthday else ''

@@ -85,7 +85,7 @@ class AddressBook(UserDict):
         input_name = input("Enter the name of the contact: ")
         record = self.search_record_by_name(input_name)
         if record:
-            print(f"Here's a list of the phones for contact '{input_name}':")
+            print(f"Here's a list of the phones for the contact '{input_name}':")
             phones_list = record.get_phone_numbers()
             for row in phones_list:
                 print(f'{row[0]}: {row[1]}')
@@ -99,6 +99,25 @@ class AddressBook(UserDict):
                 elif 1 <= phone_index_input <= len(phones_list):
                     deleted_phone = record.delete_phone(phone_index_input - 1)
                     print(f'Phone number {deleted_phone} was successfully deleted')
+                    break
+        else:
+            print(f"Contact with name '{input_name}' not found")
+
+    def delete_email(self):
+        input_name = input("Enter the name of the contact: ")
+        record = self.search_record_by_name(input_name)
+        if record:
+            print(f"Here's a list of the emails for the contact '{input_name}':")
+            emails_list = record.get_emails()
+            for row in emails_list:
+                print(f'{row[0]}: {row[1]}')
+            while True:
+                email_index_input = int(input('Enter the index of the email you want to delete: '))
+                if email_index_input < 1 or email_index_input > len(emails_list):
+                    print(f'Index is out of the range. You have to enter index in the range of [1 - {len(emails_list)}]')
+                elif 1 <= email_index_input <= len(emails_list):
+                    deleted_email = record.delete_email(email_index_input - 1)
+                    print(f'Email {deleted_email} was successfully deleted')
                     break
         else:
             print(f"Contact with name '{input_name}' not found")

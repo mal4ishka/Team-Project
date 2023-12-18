@@ -46,6 +46,9 @@ def parser(inquire):
     elif inquire == 'delete_note':
         address_book.delete_note()
         make_dump()
+    elif inquire == 'delete_email':
+        address_book.delete_email()
+        make_dump()
     else:
         print('Something went wrong. Please try again')
 

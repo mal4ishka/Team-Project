@@ -164,6 +164,7 @@ class AddressBook(UserDict):
         current_datetime = datetime.now().date()
         interval = timedelta(days=interval_days)
         end_period_of_birthday = current_datetime + interval
+        
         for birth in self.contacts.values():
             if current_datetime < contact.birthday < end_period_of_birthday:
                 records.append(contact)

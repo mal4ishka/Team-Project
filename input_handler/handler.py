@@ -52,6 +52,8 @@ def parser(inquire):
     elif inquire == 'edit_name':
         address_book.edit_name()
         make_dump()
+    elif inquire == 'search_birthdays':
+        address_book.search_birthdays()
     else:
         print('Something went wrong. Please try again')
 

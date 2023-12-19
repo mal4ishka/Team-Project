@@ -1,5 +1,6 @@
 from collections import UserDict
 from .Name import Name
+from datetime import date, datetime, timedelta
 
 
 class AddressBook(UserDict):
@@ -155,3 +156,16 @@ class AddressBook(UserDict):
                     print(e)
         else:
             print(f"Contact '{input_name}' not found in the address book")
+
+    def search_birthdays(self):
+        print('Enter the period for which you need to know birthday people in days:')
+        interval_days = int(input())
+        records = []
+        current_datetime = datetime.now().date()
+        interval = timedelta(days=interval_days)
+        end_period_of_birthday = current_datetime + interval
+
+        for birth in self.contacts.values():
+            if current_datetime < contact.birthday < end_period_of_birthday:
+                records.append(contact)
+        return records

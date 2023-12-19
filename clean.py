@@ -6,9 +6,12 @@ import sys
 import tarfile
 import zipfile
 import gzip
+import os
 
 
 class FileSorted:
+    path_to_sort = Path('Team-Project\\files_to_sort\\')
+    path_sorted = Path('Team-Project\\sort\\')
     UKRAINIAN_SYMBOLS = 'абвгдеєжзиіїйклмнопрстуфхцчшщьюя'
     TRANSLATION = ("a", "b", "v", "g", "d", "e", "je", "zh", "z", "y", "i",
                    "ji", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u",
@@ -90,14 +93,16 @@ class FileSorted:
                     self.others.append(new_name)
 
     #  Метод призначений для обробки знайдених файлів.
-    def handle_file(self, path, root_folder, dist):
-        target_folder = root_folder / dist
+    def handle_file(self, path, dist):
+        # target_folder = root_folder / dist
+        target_folder = self.path_sorted / dist
         target_folder.mkdir(exist_ok=True)
         path.replace(target_folder/self.normalize(path.name))
 
     #  Метод призначений для обробки знайдених архівів.
-    def handle_archive(self, path, root_folder, dist):
-        target_folder = root_folder / dist
+    def handle_archive(self, path, dist):
+        # target_folder = root_folder / dist
+        target_folder = self.path_sorted / dist
         target_folder.mkdir(exist_ok=True)
         new_name = self.normalize(path.name.replace(
             ".zip", "").replace(".gz", "").replace(".tar", ""))
@@ -106,6 +111,7 @@ class FileSorted:
         try:
             shutil.unpack_archive(str(path.resolve()),
                                   str(archive_folder.resolve()))
+            os.remove(path)
         except (shutil.ReadError, FileNotFoundError, tarfile.ReadError, zipfile.BadZipFile, gzip.BadGzipFile):
             archive_folder.rmdir()
             return
@@ -130,33 +136,33 @@ class FileSorted:
                 except OSError:
                     pass
 
-    def clean_folder(self, path):
+    def clean_folder(self):
         # path = sys.argv[1]
-        print(f"Start in {path}")
-        folder_path = Path(path)
+        folder_path = self.path_to_sort
+        print(f"Start in {folder_path}")
         self.scan(folder_path)
 
         for file in self.images:
-            self.handle_file(file, folder_path, "images")
+            self.handle_file(file, "images")
 
         for file in self.videos:
-            self.handle_file(file, folder_path, "videos")
+            self.handle_file(file, "videos")
 
         for file in self.documents:
-            self.handle_file(file, folder_path, "documents")
+            self.handle_file(file, "documents")
 
         for file in self.music:
-            self.handle_file(file, folder_path, "music")
+            self.handle_file(file, "music")
 
         for file in self.others:
-            self.handle_file(file, folder_path, "others")
+            self.handle_file(file, "others")
 
         for file in self.archives:
-            self.handle_archive(file, folder_path, "archives")
+            self.handle_archive(file, "archives")
 
         self.get_folder_objects(folder_path)
 
 
-# if __name__ == '__main__':
-#     sorter = FileSorted()
-#     sorter.clean_folder('temp\\')
+if __name__ == '__main__':
+    sorter = FileSorted()
+    sorter.clean_folder()

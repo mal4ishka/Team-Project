@@ -67,9 +67,22 @@ class PersonalNoteAssistant:
                 print(f'Note was successfully deleted')
                 break
 
-    def search_notes_by_tag(self, tag):
-        matching_notes = [note for note in self.notes if tag in note.tags]
-        return matching_notes
+    def search_notes(self):
+        keyword = input('Enter some text: ')
+        matching_notes = []
+        for note in self.notes:
+            if note.text.casefold().__contains__(keyword.casefold()):
+                matching_notes.append(note)
+        if len(matching_notes) == 0:
+            print(f'No notes found with the keyword "{keyword}".')
+        else:
+            print(f'Search results for the keyword "{keyword}":')
+            for note in matching_notes:
+                print(note)
+
+    # def search_notes_by_tag(self, tag):
+    #     matching_notes = [note for note in self.notes if tag in note.tags]
+    #     return matching_notes
 
     def print_notes(self):
         for note in self.notes:

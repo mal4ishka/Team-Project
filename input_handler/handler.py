@@ -64,6 +64,9 @@ def parser(inquire):
     elif inquire == 'edit_note':
         notes.edit_note()
         make_dump(notes_name, notes)
+    elif inquire == 'search_notes':
+        notes.search_notes()
+        make_dump(notes_name, notes)
     else:
         print('Something went wrong. Please try again')
 

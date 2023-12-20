@@ -1,5 +1,6 @@
 from Classes.Record import Record
 from Classes.AddressBook import AddressBook
+from sort.sort import FileSorted
 import pickle
 import os
 
@@ -54,6 +55,9 @@ def parser(inquire):
         make_dump()
     elif inquire == 'search_birthdays':
         address_book.search_birthdays()
+    elif inquire == 'sort_files':
+        sorter = FileSorted()
+        sorter.clean_folder()
     else:
         print('Something went wrong. Please try again')
 

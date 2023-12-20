@@ -3,6 +3,7 @@ from Classes.AddressBook import AddressBook
 from sort.sort import FileSorted
 import pickle
 import os
+from Classes.Note import Note, PersonalNoteAssistant
 
 
 def handler():

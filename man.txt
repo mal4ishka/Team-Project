@@ -14,13 +14,12 @@ Notes actions:
 add_note: Adds note to the existing contact
 edit_note: Edits the existing note
 delete_note: Deletes the existing note
-search_note: Searches notes in the contacts
+search_notes: Searches notes in the contacts
 
 Tags actions:
-add_tags: Adds tags to the existing note
 search_tags: Searches notes by tags
 
 Miscellaneous actions:
-print_birthdays: Prints the list of contacts with birthdays in given amount of days
+search_birthdays: Prints the list of contacts with birthdays in given amount of days
 sort_files: Sort files in files directory
 exit: Exit program

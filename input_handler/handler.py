@@ -50,9 +50,6 @@ def parser(inquire):
         make_dump(book_name, address_book)
     elif inquire == 'search_birthdays':
         address_book.search_birthdays()
-    elif inquire == 'sort_files':
-        sorter = FileSorted()
-        sorter.clean_folder()
     elif inquire == 'add_note':
         notes.add_note()
         make_dump(notes_name, notes)
@@ -67,6 +64,9 @@ def parser(inquire):
     elif inquire == 'search_notes':
         notes.search_notes()
         make_dump(notes_name, notes)
+    elif inquire == 'sort_files':
+        sorter = FileSorted()
+        sorter.clean_folder()
     else:
         print('Something went wrong. Please try again')
 

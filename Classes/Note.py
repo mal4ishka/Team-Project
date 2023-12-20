@@ -80,10 +80,6 @@ class PersonalNoteAssistant:
             for note in matching_notes:
                 print(note)
 
-    # def search_notes_by_tag(self, tag):
-    #     matching_notes = [note for note in self.notes if tag in note.tags]
-    #     return matching_notes
-
     def print_notes(self):
         for note in self.notes:
             print(note)

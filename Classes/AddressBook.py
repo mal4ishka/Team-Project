@@ -175,7 +175,8 @@ class AddressBook(UserDict):
             if true_birthday:
                 birthday_datetime = datetime.strptime(str(true_birthday), '%Y-%m-%d %H:%M:%S')
                 new_birthday_date = birthday_datetime.date().replace(year=today_year)
-                if current_datetime <= new_birthday_date <= end_period_of_birthday:
+                new_new_birthday_date = birthday_datetime.date().replace(year=today_year + 1)
+                if current_datetime <= new_birthday_date <= end_period_of_birthday or current_datetime <= new_new_birthday_date <= end_period_of_birthday:
                     records.append(birth)
         if len(records) > 0:
             for record in records:

@@ -160,12 +160,12 @@ class AddressBook(UserDict):
 
     def search_birthdays(self):
         while True:
+            input_interval = input('Enter the period for which you need to know birthday people in days: ')
             try:
-                interval_days = int(input('Enter the period for which you need to know birthday people in days: '))
+                interval_days = int(input_interval)
                 break
             except ValueError:
-                print("Value is not a number")
-                # print(f"Value {interval_days} is not a number")
+                print(f"Value '{input_interval}' is not a number")
         records = []
         current_datetime = datetime.now().date()
         today_year = current_datetime.year

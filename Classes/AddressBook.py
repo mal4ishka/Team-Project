@@ -178,11 +178,3 @@ class AddressBook(UserDict):
                 if current_datetime <= new_birthday_date <= end_period_of_birthday:
                     records.append(birth)
         print(records)
-
-
-
-
-
-
-
-

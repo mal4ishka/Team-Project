@@ -159,14 +159,12 @@ class AddressBook(UserDict):
             print(f"Contact '{input_name}' not found in the address book")
 
     def search_birthdays(self):
-        interval_days = int(input('Enter the period for which you need to know birthday people in days: '))
         while True:
             try:
                 interval_days = int(input('Enter the period for which you need to know birthday people in days: '))
                 break
             except ValueError:
                 print("Value is not a number")
-                # print(f"Value {interval_days} is not a number")
         records = []
         current_datetime = datetime.now().date()
         today_year = current_datetime.year

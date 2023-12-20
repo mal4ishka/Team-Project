@@ -14,7 +14,7 @@ class AddressBook(UserDict):
                 record_exists = True
                 break
         if record_exists:
-            print('Contact with this name alreasy exists')
+            print('Contact with this name already exists')
         else:
             self.contacts[record.name] = record
             print("New contact successfully added")

@@ -1,8 +1,12 @@
 from Classes.Record import Record
 from Classes.AddressBook import AddressBook
+<<<<<<< Updated upstream
 import pickle
 import os
 
+=======
+from Classes.Note import Note, PersonalNoteAssistant
+>>>>>>> Stashed changes
 
 def handler():
     wait = True

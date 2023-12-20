@@ -10,8 +10,8 @@ import os
 
 
 class FileSorted:
-    path_to_sort = Path('Team-Project\\files_to_sort\\')
-    path_sorted = Path('Team-Project\\sort\\')
+    path_to_sort = Path('sort\\files_to_sort')
+    path_sorted = Path('sort\\files_to_sort\\')
     UKRAINIAN_SYMBOLS = 'абвгдеєжзиіїйклмнопрстуфхцчшщьюя'
     TRANSLATION = ("a", "b", "v", "g", "d", "e", "je", "zh", "z", "y", "i",
                    "ji", "j", "k", "l", "m", "n", "o", "p", "r", "s", "t", "u",
@@ -137,9 +137,8 @@ class FileSorted:
                     pass
 
     def clean_folder(self):
-        # path = sys.argv[1]
         folder_path = self.path_to_sort
-        print(f"Start in {folder_path}")
+        print(f"Start sorting files...")
         self.scan(folder_path)
 
         for file in self.images:
@@ -162,6 +161,7 @@ class FileSorted:
 
         self.get_folder_objects(folder_path)
 
+        print('Sorting finished')
 
 if __name__ == '__main__':
     sorter = FileSorted()

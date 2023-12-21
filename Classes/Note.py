@@ -81,14 +81,14 @@ class PersonalNoteAssistant:
                 print(note)
 
     def search_notes_by_tag(self):
-        tag = input('Enter tag: ')
+        tag = input('Enter tag(s) (comma separated): ')
         tag_parts = [part.strip() for part in tag.split(',')]
         matching_notes = [note for note in self.notes if all(
             tag_part in note.tags for tag_part in tag_parts)]
         if len(matching_notes) == 0:
-            print(f'No notes found with tag "{tag}"')
+            print(f'No notes found with tag(s) "{tag}"')
         else:
-            print(f'Searching results for tag "{tag}":')
+            print(f'Searching results for tag(s) "{tag}":')
         for note in matching_notes:
             print(note)
 

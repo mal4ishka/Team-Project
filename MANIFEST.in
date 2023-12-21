@@ -1,0 +1,3 @@
+include data/book.bin
+include data/notes.bin
+include man.txt

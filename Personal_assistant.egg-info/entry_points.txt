@@ -1,0 +1,3 @@
+[console_scripts]
+PA = PA.input_handler.handler:handler
+

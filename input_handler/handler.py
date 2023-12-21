@@ -64,6 +64,9 @@ def parser(inquire):
     elif inquire == 'search_notes':
         notes.search_notes()
         make_dump(notes_name, notes)
+    elif inquire == 'search_notes_by_tag':
+        notes.search_notes_by_tag()
+        make_dump(notes_name, notes)
     elif inquire == 'sort_files':
         sorter = FileSorted()
         sorter.clean_folder()

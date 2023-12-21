@@ -60,7 +60,7 @@ sort_files: Sort files in files directory
 exit: Exit program
 ```
 
-The logic is extremely simple - type any of the given command above and follow further instructions.
+The logic is extremely simple - type any of the given commands above and follow further instructions.
 
 License
 This project is licensed under the MIT License - see the LICENSE file for details.

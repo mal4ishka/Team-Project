@@ -1,9 +1,6 @@
-import sys
-sys.path.insert(0, 'C:\\Users\\mal4ishka1\\AppData\\Local\\Programs\\Python\\Python310\\Lib\\site-packages\\PA')
-
-from ..Classes.Record import Record
-from ..Classes.AddressBook import AddressBook
-from ..Classes.Note import Note, PersonalNoteAssistant
+from Classes.Record import Record
+from Classes.AddressBook import AddressBook
+from Classes.Note import PersonalNoteAssistant, AddNoteCommand, EditNoteCommand, DeleteNoteCommand, SearchNotesCommand, SearchNotesByTagCommand
 import pickle
 import os
 
@@ -53,22 +50,20 @@ def parser(inquire):
     elif inquire == 'search_birthdays':
         address_book.search_birthdays()
     elif inquire == 'add_note':
-        notes.add_note()
+        notes.execute_command(AddNoteCommand())
         make_dump(notes_name, notes)
     elif inquire == 'print_notes':
         notes.print_notes()
     elif inquire == 'delete_note':
-        notes.delete_note()
+        notes.execute_command(DeleteNoteCommand())
         make_dump(notes_name, notes)
     elif inquire == 'edit_note':
-        notes.edit_note()
+        notes.execute_command(EditNoteCommand())
         make_dump(notes_name, notes)
     elif inquire == 'search_notes':
-        notes.search_notes()
-        make_dump(notes_name, notes)
+        notes.execute_command(SearchNotesCommand())
     elif inquire == 'search_notes_by_tag':
-        notes.search_notes_by_tag()
-        make_dump(notes_name, notes)
+        notes.execute_command(SearchNotesByTagCommand())
     elif inquire == 'sort_files':
         from ..sort.sort import FileSorted
         sorter = FileSorted()

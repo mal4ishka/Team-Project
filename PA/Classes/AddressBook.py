@@ -129,8 +129,14 @@ class AddressBook(UserDict):
         input_name = input("Enter the name of the contact: ")
         record = self.search_record_by_name(input_name)
         if record:
-            del self.contacts[record.name]
-            print(f"Contact '{record.name}' removed successfully")
+            key_to_delete = None
+            for key, value in self.contacts.items():
+                if str(value.name) == input_name:
+                    key_to_delete = key
+                    break
+            if key_to_delete:
+                del self.contacts[key_to_delete]
+                print(f"Contact '{input_name}' successfully deleted")
         else:
             print(f"Contact '{input_name}' not found in the address book")
 
